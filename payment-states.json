@@ -1,0 +1,9 @@
+{
+  "authorized": "authorized",
+  "settled": "settled",
+  "successful": "successful",
+  "failed": "failed",
+  "canceled": "canceled",
+  "refunded": "refunded",
+  "approved": "approved"
+}
