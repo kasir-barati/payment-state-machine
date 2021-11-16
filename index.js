@@ -1,7 +1,7 @@
 // @ts-check
-const paymentStates = require('./payment-states.json');
+const paymentStates = require("./payment-states.json");
 
-const createMachine = require('./create-machine');
+const createMachine = require("./create-machine");
 
 const machine = createMachine({
   initialState: paymentStates.authorized,
@@ -19,7 +19,7 @@ const machine = createMachine({
         target: paymentStates.settled,
         action() {
           console.log(
-            `transition action for "settle" in "${paymentStates.authorized}" state`
+            `transition action for "settle" in "${paymentStates.authorized}" state`,
           );
         },
       },
@@ -39,7 +39,7 @@ const machine = createMachine({
         target: paymentStates.successful,
         action() {
           console.log(
-            `transition action for "done" in "${paymentStates.settled}" state`
+            `transition action for "done" in "${paymentStates.settled}" state`,
           );
         },
       },
@@ -47,7 +47,7 @@ const machine = createMachine({
         target: paymentStates.failed,
         action() {
           console.log(
-            `transition action for "fail" in "${paymentStates.settled}" state`
+            `transition action for "fail" in "${paymentStates.settled}" state`,
           );
         },
       },
@@ -55,7 +55,7 @@ const machine = createMachine({
         target: paymentStates.canceled,
         action() {
           console.log(
-            `transition action for "cancel" in "${paymentStates.settled}" state`
+            `transition action for "cancel" in "${paymentStates.settled}" state`,
           );
         },
       },
@@ -75,7 +75,7 @@ const machine = createMachine({
         target: paymentStates.approved,
         action() {
           console.log(
-            `transition action for "adminApproval" in ${paymentStates.successful} state`
+            `transition action for "adminApproval" in ${paymentStates.successful} state`,
           );
         },
       },
@@ -83,7 +83,7 @@ const machine = createMachine({
         target: paymentStates.refunded,
         action() {
           console.log(
-            `transition action for "adminRefund" in ${paymentStates.successful} state`
+            `transition action for "adminRefund" in ${paymentStates.successful} state`,
           );
         },
       },
@@ -91,7 +91,7 @@ const machine = createMachine({
         target: paymentStates.refunded,
         action() {
           console.log(
-            `transition action for "adminRefund" in ${paymentStates.successful} state`
+            `transition action for "adminRefund" in ${paymentStates.successful} state`,
           );
         },
       },
@@ -99,7 +99,7 @@ const machine = createMachine({
         target: paymentStates.canceled,
         action() {
           console.log(
-            `transition action for "adminRefund" in ${paymentStates.successful} state`
+            `transition action for "adminRefund" in ${paymentStates.successful} state`,
           );
         },
       },
@@ -119,7 +119,7 @@ const machine = createMachine({
         target: paymentStates.refunded,
         action() {
           console.log(
-            `transition action for "adminRefund" in "${paymentStates.approved}" state`
+            `transition action for "adminRefund" in "${paymentStates.approved}" state`,
           );
         },
       },
@@ -127,7 +127,7 @@ const machine = createMachine({
         target: paymentStates.canceled,
         action() {
           console.log(
-            `transition action for "adminCancel" in "${paymentStates.approved}" state`
+            `transition action for "adminCancel" in "${paymentStates.approved}" state`,
           );
         },
       },
@@ -167,7 +167,7 @@ const machine = createMachine({
 
 let state = machine.value;
 console.log(`current state: ${state}`);
-state = machine.transition(state, 'settle');
+state = machine.transition(state, "settle");
 console.log(`current state: ${state}`);
-state = machine.transition(state, 'fail');
+state = machine.transition(state, "fail");
 console.log(`current state: ${state}`);

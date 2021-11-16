@@ -3,8 +3,10 @@ function createMachine(stateMachineDefinition) {
   const machine = {
     value: stateMachineDefinition.initialState,
     transition(currentState, event) {
-      const currentStateDefinition = stateMachineDefinition[currentState];
-      const destinationTransition = currentStateDefinition.transitions[event];
+      const currentStateDefinition =
+        stateMachineDefinition[currentState];
+      const destinationTransition =
+        currentStateDefinition.transitions[event];
       if (!destinationTransition) {
         // throw error
         return;
@@ -15,7 +17,6 @@ function createMachine(stateMachineDefinition) {
       destinationTransition.action();
       currentStateDefinition.actions.onExit();
       destinationStateDefinition.actions.onEnter();
-      machine.value = destinationState;
       return machine.value;
     },
   };
